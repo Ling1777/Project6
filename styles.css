@@ -351,3 +351,10 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
+/* 设置全局字体为 Montserrat，和 charity: water logo 类似 */
+body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+/* 你也可以为按钮、标题等单独设置字体，但全局设置最简单 */
