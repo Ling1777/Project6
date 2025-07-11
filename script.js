@@ -447,16 +447,51 @@ resetPipesBtn.addEventListener('click', () => {
   }
 });
 
-// === Submit按钮功能：关闭音效并跳转到最后一页 ===
+// === Submit按钮功能：只要放置了管道就加分 ===
 submitPipesBtn.addEventListener('click', () => {
   // 关闭背景音乐
   if (window.currentAudio) {
     window.currentAudio.pause();
     window.currentAudio.currentTime = 0;
   }
-  // 跳转到最后一页（假设有 showSuccessPage 函数）
-  finishPage.style.display = 'none';
-  showSuccessPage();
+
+  // 检查是否有管道被放置
+  const cells = gridContainer.querySelectorAll('.grid-cell');
+  let hasPipe = false;
+  cells.forEach(cell => {
+    // 检查格子里是否有img标签（即有管道）
+    if (cell.querySelector('img')) {
+      hasPipe = true;
+    }
+  });
+
+  // 只要有管道就加分
+  if (hasPipe) {
+    let bonus = 0;
+    if (selectedDifficulty === 'easy') {
+      bonus = 50;
+    } else if (selectedDifficulty === 'medium') {
+      bonus = 100;
+    } else if (selectedDifficulty === 'hard') {
+      bonus = 150;
+    }
+    score += bonus;
+    lastAddScore = bonus; // 记录本次加分，方便reset时扣除
+
+    // 更新分数栏（右上角）
+    const scoreBox = document.querySelectorAll('#finish-page #score-box span')[0];
+    if (scoreBox) {
+      scoreBox.textContent = score;
+    }
+
+    alert(`Great job! +${bonus} points for placing pipes!`);
+    // 跳转到最后一页（假设有 showSuccessPage 函数）
+    finishPage.style.display = 'none';
+    showSuccessPage();
+  } else {
+    alert('Please place at least one pipe on the grid before submitting!');
+    return;
+  }
 });
 
 function showSuccessPage() {
