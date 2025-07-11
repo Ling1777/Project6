@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Water Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Start Page Container -->
+    <div id="start-page">
+        <!-- Difficulty selection button group -->
+        <div id="difficulty-group">
+            <button class="difficulty-btn selected" data-level="easy">Easy</button>
+            <button class="difficulty-btn" data-level="medium">Medium</button>
+            <button class="difficulty-btn" data-level="hard">Difficult</button>
+        </div>
+        <!-- Start Button for beginning the game (now above the logo) -->
+        <button id="start-btn">
+            <img src="img/water.png" alt="Water icon" id="water-icon">
+            <span>Start</span>
+        </button>
+        <!-- Charity: water Horizontal Logo and Title in one line -->
+        <div id="logo-row">
+            <img src="img/cw_logo_horizontal.png" alt="Charity: water logo" id="cw-logo-horizontal">
+        </div>
+    </div>
+    <!-- Game Page (hidden by default) -->
+    <div id="game-page" style="display: none;">
+        <!-- Top left logo -->
+        <img src="img/cw_logo_horizontal.png" alt="Charity: water logo" id="game-logo-top">
+        <!-- Centered searching row -->
+        <div id="searching-row">
+            <img src="img/water.png" alt="Water icon" id="searching-water-icon">
+            <span id="searching-text">Searching for water resources......</span>
+        </div>
+        <!-- Question and options (now below searching row) -->
+        <div id="question-block">
+            <div id="question">Q: ......</div>
+            <div class="option">Option 1</div>
+            <div class="option">Option 2</div>
+            <div class="option">Option 3</div>
+            <div class="option">Option 4</div>
+        </div>
+        <!-- Submit button at the bottom center -->
+        <button id="submit-btn">Submit</button>
+        <!-- Score display added at the top of game-page -->
+        <div id="score-box">Score: <span id="score">0</span></div>
+    </div>
+    <!-- Finish Page (hidden by default) -->
+    <div id="finish-page" style="display: none;">
+        <img src="img/cw_logo_horizontal.png" alt="Charity: water logo" id="finish-logo">
+        <!-- 分数栏固定右上角 -->
+        <div id="score-box" style="position: fixed; top: 32px; right: 32px; background: rgba(255,255,255,0.85); color: #2E9DF7; font-size: 2rem; font-weight: bold; border-radius: 10px; padding: 10px 24px; z-index: 20; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            Score: <span id="score">0</span>
+        </div>
+        <!-- 网格容器，位于logo和分数栏下方 -->
+        <div id="grid-container" style="margin-top: 80px;">
+            <!-- 这里由JS动态生成网格 -->
+        </div>
+        <!-- 管道图片容器 -->
+        <div id="pipe-container">
+            <div class="pipe-piece" draggable="true" data-type="pipe1">
+                <img src="img/pipe1.png" alt="pipe1" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe2">
+                <img src="img/pipe2.png" alt="pipe2" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe3">
+                <img src="img/pipe3.png" alt="pipe3" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe4">
+                <img src="img/pipe4.png" alt="pipe4" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe5">
+                <img src="img/pipe5.png" alt="pipe5" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe6">
+                <img src="img/pipe6.png" alt="pipe6" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe7">
+                <img src="img/pipe7.png" alt="pipe7" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe8">
+                <img src="img/pipe8.png" alt="pipe8" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe9">
+                <img src="img/pipe9.png" alt="pipe9" width="40" height="40">
+            </div>
+            <div class="pipe-piece" draggable="true" data-type="pipe10">
+                <img src="img/pipe10.png" alt="pipe10" width="40" height="40">
+            </div>
+        </div>
+        <!-- 按钮区 -->
+        <div id="pipe-buttons">
+            <button id="reset-pipes-btn">Reset</button>
+            <button id="start-water-btn">Start Water</button>
+            <button id="submit-pipes-btn">Submit</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+
+</style>

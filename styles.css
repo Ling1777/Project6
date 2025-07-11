@@ -1,0 +1,353 @@
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 禁止页面滚动 */
+}
+
+#question-block {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#question {
+    font-size: 2rem;
+    color: #FFC907;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.option {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.3rem;
+    width: 320px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.option:hover {
+    background: #FFC907;
+    color: #222;
+}
+
+/* 让被选中的选项高亮为黄色 */
+.option.selected {
+    background: #FFC907;
+    color: #222;
+    font-weight: bold;
+    border: 2px solid #FFC907;
+}
+
+#game-logo-top {
+    position: fixed;   /* 用 fixed 让 logo 永远在页面左上角 */
+    top: 32px;
+    left: 32px;
+    height: 38px;
+    width: auto;
+    z-index: 10;
+}
+/* Submit button at the bottom center of the game page */
+#submit-btn {
+    /* 不要 position: absolute 或 fixed */
+    display: block;
+    margin: 18px auto 0 auto; /* 顶部有间距，左右自动居中 */
+    background-color: #FFC907;
+    color: #2E9DF7;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    transition: background 0.2s;
+}
+
+/* Hide the game page by default, show when active */
+#game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* 内容靠底部 */
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 100px; /* 给按钮留空间 */
+}
+
+#searching-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 220px;
+}
+
+#searching-water-icon {
+    height: 56px;
+    width: 56px;
+}
+
+#searching-text {
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Set the background color to charity: water blue */
+body {
+    background-color: #2E9DF7;
+    margin: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Center the start page content vertically and horizontally */
+#start-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Style the logo row to put logo and text in one line */
+#logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    gap: 18px;
+}
+
+/* Style the horizontal logo */
+#cw-logo-horizontal {
+    height: 60px;
+    width: auto;
+}
+
+/* Style the Charity: Water text */
+#cw-title {
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.10);
+}
+
+/* Style the Start button */
+
+#start-btn {
+    background-color: #FFC907;
+    color: #2E9DF7;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 40px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 48px rgba(0,0,0,0.10);
+    transition: background 0.2s;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#start-btn span {
+    color: #2E9DF7;
+    font-size: 6rem;
+    font-weight: bold;
+    line-height: .1;
+}
+
+#water-icon {
+    height: 96px;
+    width: 96px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+#start-btn:hover {
+    background-color: #FFD84D;
+}
+
+/* Score box at the top of the game page */
+#score-box {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    background: rgba(255,255,255,0.85);
+    color: #2E9DF7;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 24px;
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Finish Page Styles */
+#finish-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+    background: #2E9DF7;    /* 第三页背景为 charity: water 蓝色 */
+    position: relative;
+}
+
+#finish-logo {
+    position: fixed;
+    top: 32px;
+    left: 32px;
+    height: 38px;
+    width: auto;
+    z-index: 110;
+}
+
+#finish-message {
+    color: #fff;
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Grid container for the game */
+#grid-container {
+    margin-top: 70px;
+    display: grid;
+    justify-content: center;
+    /* grid-template-columns/rows 和 gap 由 JS 动态设置 */
+}
+
+.grid-cell {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width/height/font-size 由 JS 动态设置 */
+    transition: background 0.2s;
+    border: 2px solid #fff;
+}
+
+.grid-cell.obstacle {
+    background: rgba(136,136,136,0.7);
+}
+
+.grid-cell.water {
+    background: #2E9DF7;
+    color: #fff;
+}
+
+.grid-cell.house {
+    background: #FFD84D;
+    color: #222;
+}
+
+/* 难度按钮样式：初始同样大小，选中时放大 */
+#difficulty-group {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.difficulty-btn {
+    background: #fff;
+    color: #2E9DF7;
+    border: 2px solid #2E9DF7;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.difficulty-btn.selected {
+    background: #2E9DF7;
+    color: #fff;
+    transform: scale(1.18);
+    border: 2px solid #FFC907;
+    z-index: 1;
+}
+
+#pipe-container {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.pipe-piece {
+    margin-top: 32px;
+    width: 72px;
+    height: 72px;
+    background: #fffbe6;
+    border: 2px solid #FFC907;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: grab;
+    user-select: none;
+    transition: box-shadow 0.2s;
+}
+
+.pipe-piece:active {
+    box-shadow: 0 2px 12px #FFC907;
+}
+
+#pipe-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+#pipe-buttons button {
+    background: #FFC907;         /* 按钮为黄色 */
+    color: #2E9DF7;              /* 字体为蓝色 */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 12px 36px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#pipe-buttons button:hover,
+#pipe-buttons button:active,
+#pipe-buttons button.selected {
+    transform: scale(1.12);      /* 点击/悬停时变大 */
+    background: #FFD84D;         /* 悬停时更亮的黄 */
+    color: #2E9DF7;
+}
+
+/* Charity: water Brand Colors
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+*/
